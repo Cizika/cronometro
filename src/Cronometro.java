@@ -106,6 +106,7 @@ public class Cronometro extends JFrame implements ActionListener, Runnable {
         this.setVisible(true);
     }
 
+    // Método para atualizar tempo no GUI
     public void atualizarVisualmente(){
         minutosText.setText(formatoTempo.format(minutos));
         segundosText.setText(formatoTempo.format(segundos));
@@ -114,9 +115,10 @@ public class Cronometro extends JFrame implements ActionListener, Runnable {
 
     @Override
     public void run() {
+
+        // Enquanto o cronômetro estiver ligado, a thread continua rodando
         while(ligado){
             try {
-
                 // Passou-se um milissegundo
                 TimeUnit.MILLISECONDS.sleep(1);
                 milissegundos++;
@@ -167,6 +169,7 @@ public class Cronometro extends JFrame implements ActionListener, Runnable {
             // Desligando o cronômetro
             ligado = false;
 
+            // Aguardando um milissegundo para a thread ser morta
             try {
                 Thread.sleep(1);
             } catch (InterruptedException ex) {
